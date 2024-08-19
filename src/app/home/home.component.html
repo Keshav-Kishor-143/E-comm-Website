@@ -2,7 +2,14 @@
 <ngb-carousel>
   <ng-template *ngFor="let item of popularProductsData" ngbSlide>
     <div class="picsum-img-wrapper">
-      <img class="productImage" src="{{ item.imageUrl }}" alt="Product image" />
+      <a
+        [routerLink]="['/product-detail/' + item.id]"
+        routerLinkActive="router-link-active"
+        ><img
+          class="productImage"
+          src="{{ item.imageUrl }}"
+          alt="Product image"
+      /></a>
     </div>
     <div class="carousel-caption">
       <a

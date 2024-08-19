@@ -1,0 +1,21 @@
+.auth-toggle-link {
+  margin-top: 20px;
+  color: black;
+  font-size: 15px;
+  text-align: center;
+  cursor: pointer;
+}
+
+.auth-toggle-link:hover{
+  color: blue;
+}
+
+.form-group {
+  margin-bottom: 15px;
+}
+
+.form-group label {
+  display: block;
+  font-weight: bold;
+  margin-bottom: 5px;
+}

@@ -9,7 +9,9 @@
   <div class="col-sm-6">
     <div class="details">
       <h2 class="product-title">{{ productData.name }}</h2>
-      <h4 class="product-price">Price: <span>₹</span>{{ productData.price }}</h4>
+      <h4 class="product-price">
+        Price: <span>₹</span>{{ productData.price }}
+      </h4>
       <div class="product-color-group">
         <h5>Color:</h5>
         <div
@@ -22,9 +24,9 @@
 
       <div class="quantity-group">
         <h6>Quantity:</h6>
-        <button class="quantity-button" (click)="increaseQuantity()">+</button>
-        <input type="text" [(ngModel)]="quantity" class="quantity-input" />
         <button class="quantity-button" (click)="decreaseQuantity()">-</button>
+        <input type="text" [(ngModel)]="quantity" class="quantity-input" />
+        <button class="quantity-button" (click)="increaseQuantity()">+</button>
       </div>
 
       <div class="function-buttons">
