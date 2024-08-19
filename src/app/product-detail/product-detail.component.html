@@ -1,0 +1,39 @@
+<div class="row product-details" *ngIf="productData; else loading">
+  <div class="col-sm-6">
+    <img
+      class="product-image"
+      src="{{ productData.imageUrl }}"
+      alt="{{ productData.name }}"
+    />
+  </div>
+  <div class="col-sm-6">
+    <div class="details">
+      <h2 class="product-title">{{ productData.name }}</h2>
+      <h4 class="product-price">Price: <span>₹</span>{{ productData.price }}</h4>
+      <div class="product-color-group">
+        <h5>Color:</h5>
+        <div
+          class="product-color"
+          [style.backgroundColor]="productData.color"
+        ></div>
+      </div>
+      <h6 class="product-category">Category: {{ productData.category }}</h6>
+      <p class="product-description">{{ productData.description }}</p>
+
+      <div class="quantity-group">
+        <h6>Quantity:</h6>
+        <button class="quantity-button" (click)="increaseQuantity()">+</button>
+        <input type="text" [(ngModel)]="quantity" class="quantity-input" />
+        <button class="quantity-button" (click)="decreaseQuantity()">-</button>
+      </div>
+
+      <div class="function-buttons">
+        <button class="form-button add-to-cart-button">Add to Cart</button>
+        <button class="form-button buy-now-button">Buy Now</button>
+      </div>
+    </div>
+  </div>
+</div>
+<ng-template #loading>
+  <p>Loading product details...</p>
+</ng-template>

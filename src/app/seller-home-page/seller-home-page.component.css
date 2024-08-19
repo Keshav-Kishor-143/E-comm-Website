@@ -1,0 +1,85 @@
+body, html {
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  font-family: Arial, sans-serif; /* Add a more readable font */
+}
+
+.seller-home-decoration {
+  width: 100%;
+  max-width: 1200px; /* Optional: Limit the maximum width */
+  margin: 20px auto; /* Center the div horizontally and add padding at the top */
+  padding: 30px 20px; /* Increase the padding above */
+  border-radius: 10px;
+  background-color: rgba(255, 255, 255, 0.8);
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Optional: Add a slight shadow */
+}
+
+.seller-home-decoration h3 {
+  margin-top: 10px; /* Decrease the space above "Your Products" */
+  font-size: 24px; /* Increase the font size */
+  color: #333; /* Change the text color */
+  text-align: center; /* Center align the heading */
+}
+
+.product-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 20px; /* Add some space above the table */
+  text-align: center; /* Center align the text in the table */
+}
+
+.product-table thead {
+  background-color: #f2f2f2; /* Light grey background for the header */
+}
+
+.product-table th {
+  border: 1px solid #ddd;
+  padding: 12px;
+  text-align: center; /* Center align the text in the header */
+  font-weight: bold;
+  color: #333;
+}
+
+.product-table td {
+  border: 1px solid #ddd;
+  padding: 12px;
+  text-align: center; /* Center align the text in the table cells */
+  color: #666;
+  vertical-align: middle; /* Vertically center content */
+}
+
+.product-table tbody tr:nth-child(even) {
+  background-color: #f9f9f9; /* Light grey background for even rows */
+}
+
+.product-table tbody tr:hover {
+  background-color: #f1f1f1; /* Slightly darker grey on hover */
+}
+
+.product-table img {
+  max-width: 100px;
+  max-height: 100px;
+  object-fit: contain; /* Ensure the image fits within the specified dimensions without being cut off */
+  border-radius: 5px; /* Optional: Add rounded corners to images */
+}
+
+.action-icons {
+  display: flex;
+  flex-direction: row; /* Arrange icons vertically */
+  align-items: center; /* Center align icons horizontally */
+  justify-content: center; /* Center align icons vertically */
+  gap: 10px; /* Space between the icons */
+  height: 100%; /* Ensure the div takes the full height of the cell */
+}
+
+.action-icons i {
+  cursor: pointer;
+  font-size: 18px;
+  color: #666;
+  transition: color 0.3s;
+}
+
+.action-icons i:hover {
+  color: #333; /* Change color on hover */
+}

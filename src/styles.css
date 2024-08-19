@@ -1,1 +1,99 @@
-/* You can add global styles to this file, and also import other style files */
+html,
+body {
+  height: 100%;
+}
+
+body {
+  margin: 0;
+  font-family: Roboto, "Helvetica Neue", sans-serif;
+  background: linear-gradient(
+      rgba(0, 0, 0, 0.1), /* Adjusted the opacity level here */
+      rgba(0, 0, 0, 0.9)
+    ),
+    url("https://img.freepik.com/free-photo/shopping-trolley-with-little-snooze_23-2147957113.jpg?w=1380&t=st=1723119131~exp=1723119731~hmac=4077fd65e465477aa2c2fa0ab898d31c1c4443d70418cf4ce9c48048337c7df6");
+  height: 100%;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-attachment: fixed;
+}
+
+.seller-auth {
+  display: flex;
+  justify-content: left;
+  align-items: center;
+  padding-top: 20px;
+  height: 100%;
+  text-align: center;
+}
+
+.signup,
+.login {
+  border-radius: 10px;
+  background-color: rgba(255, 255, 255, 0.8); /* Slight transparency for form background */
+  padding: 20px;
+  border-radius: 10px;
+  width: 450px;
+}
+
+.common-form {
+  text-align: left; /* Align text inside the form to the left */
+  display: flex;
+  width: 100%;
+  flex-direction: column;
+}
+
+.form-input {
+  height: 35px;
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  color: black;
+}
+
+.form-input::placeholder {
+  color: rgb(223, 208, 208); /* Placeholder text color */
+}
+
+.form-button {
+  background-color: grey;
+  color: white;
+  margin-top: 20px;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 1em;
+}
+
+.form-button:hover {
+  background-color: #0056b3;
+}
+
+.error-p {
+  color: red;
+  font-size: 0.9em;
+  margin-top: 5px;
+}
+
+.products-search {
+  border-color: 1px solid white;
+}
+
+.button-search {
+  border-color: 1px solid white;
+}
+
+.h1-Heading-Style {
+  margin-bottom: 20px;
+  color: black;
+  text-decoration: none;
+  font-style: oblique;
+}
+
+h3 {
+  color: black;
+  text-decoration: none;
+  font-style: oblique;
+}

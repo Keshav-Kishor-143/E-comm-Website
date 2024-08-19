@@ -1,0 +1,123 @@
+.ngb-carousel {
+  width: 100%;
+  max-width: 800px;
+  margin: auto;
+}
+
+.picsum-img-wrapper {
+  width: 100%;
+  height: 400px;
+  overflow: hidden;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.productImage {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  object-position: center;
+}
+
+.carousel-caption {
+  background-color: rgba(0, 0, 0, 0.6);
+  padding: 20px;
+  border-radius: 10px;
+  color: #fff;
+  text-align: center;
+  bottom: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  max-width: 80%;
+  box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.5);
+}
+
+.carousel-caption h3 {
+  font-size: 1.5em;
+  margin-bottom: 10px;
+  font-weight: bold;
+  color: white;
+}
+
+.carousel-caption p {
+  font-size: 1em;
+  margin: 0;
+}
+.product-list-wrapper {
+  padding: 80px 0;
+}
+
+.product-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px; /* Spacing between product items */
+}
+
+.product-item {
+  width: 250px;
+  background-color: #fff;
+  border-radius: 12px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Subtle shadow for depth */
+  overflow: hidden; /* Ensures the border radius applies to children */
+  transition: transform 0.3s ease, box-shadow 0.3s ease; /* Smooth hover effect */
+  text-align: center;
+  padding-bottom: 20px; /* Adds padding to the bottom for spacing */
+}
+
+.product-item:hover {
+  transform: translateY(-5px); /* Slight lift on hover */
+  transform: scale(1.05);
+  z-index: 3;
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2); /* Deeper shadow on hover */
+}
+
+.product-item img {
+  width: 100%; /* Ensures the image takes the full width of the container */
+  height: 200px; /* Sets a fixed height for all images */
+  object-fit: cover; /* Ensures the image covers the entire area, cropping if necessary */
+  border-bottom: 1px solid #ddd; /* Separator between image and details */
+  border-radius: 8px 8px 0 0;
+}
+
+.product-details {
+  padding: 15px; /* Space around the product details */
+}
+
+.product-footer {
+  margin-top: 15px;
+}
+
+.product-footer a {
+  margin: 5px 0;
+  display: inline-block;
+  padding: 8px 12px;
+  color: #fff;
+  background-color: grey;
+  border-radius: 5px;
+  text-decoration: none;
+  font-size: 0.9em;
+  transition: background-color 0.3s ease;
+}
+
+.product-footer a:hover {
+  background-color: #0056b3;
+}
+
+.product-footer a:not(:last-child) {
+  margin-right: 10px;
+}
+
+.details-header {
+  font-size: 1.1em;
+  font-weight: 600;
+  color: #333;
+  margin-bottom: 10px;
+}
+
+.product-price h6,
+.product-color h6 {
+  font-size: 0.9em;
+  color: #555;
+  margin: 5px 0;
+}

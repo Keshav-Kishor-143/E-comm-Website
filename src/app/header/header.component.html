@@ -1,0 +1,88 @@
+<nav class="nav">
+  <h1>
+    <a
+      routerLink=""
+      ngbPopover="Navigates to home page"
+      [openDelay]="300"
+      [closeDelay]="500"
+      triggers="mouseenter:mouseleave"
+      >E-Cart</a
+    >
+    
+  </h1>
+  <div class="nav-search" *ngIf="menuType === 'default'">
+    <input
+      type="text"
+      #searchInput
+      (keyup)="searchProduct($event)"
+      (focus)="onFocus()"
+      (blur)="onBlur()"
+      placeholder="Search by name or category"
+    />
+    <button (click)="submitSearchResult(searchInput.value)">Search</button>
+
+    <ul
+      class="suggested-search"
+      style="list-style-type: none; padding-left: 0; margin: 0"
+      *ngIf="searchInput.value.trim() && searchResultVisible"
+    >
+      <!-- Use ng-container to combine ngIf and ngFor -->
+      <ng-container
+        *ngIf="searchResult && searchResult.length > 0; else noResults"
+      >
+        <li *ngFor="let item of searchResult" (click)="onSelectItem(item)">
+          <a>{{ item.name }}</a>
+        </li>
+      </ng-container>
+      <!-- Template for no results -->
+      <ng-template #noResults>
+        <li>
+          <a>No results found</a>
+        </li>
+      </ng-template>
+    </ul>
+  </div>
+
+  <div [ngSwitch]="menuType" class="menu">
+    <ul *ngSwitchCase="'default'" class="default-list">
+      <!-- <li>
+        <a [routerLink]="['']" routerLinkActive="router-link-active">Home</a>
+      </li> -->
+      <li>
+        <a [routerLink]="['/seller-auth']" routerLinkActive="router-link-active"
+          >Seller</a
+        >
+      </li>
+      <li>
+        <a [routerLink]="['/login']" routerLinkActive="router-link-active"
+          >User</a
+        >
+      </li>
+      <li>
+        <a [routerLink]="['/cart']" routerLinkActive="router-link-active"
+          >Cart(0)</a
+        >
+      </li>
+    </ul>
+    <ul *ngSwitchCase="'seller'" class="seller-list">
+      <li style="font-family: Gill Sans; font-size: large">
+        Hi, {{ sellerName | titlecase }}
+      </li>
+      <li>
+        <a [routerLink]="['/seller-auth']" routerLinkActive="router-link-active"
+          >Your Products</a
+        >
+      </li>
+      <li>
+        <a
+          [routerLink]="['/seller-add-product']"
+          routerLinkActive="router-link-active"
+          >Add Product</a
+        >
+      </li>
+      <li>
+        <a (click)="logout()">Logout</a>
+      </li>
+    </ul>
+  </div>
+</nav>

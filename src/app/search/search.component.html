@@ -1,0 +1,28 @@
+<div class="row-search-item" *ngFor="let item of searchResult">
+  <div class="col-sm-3">
+    <a
+      [routerLink]="['/product-detail/' + item.id]"
+      routerLinkActive="router-link-active"
+    >
+      <img src="{{ item.imageUrl }}" alt="" />
+    </a>
+  </div>
+  <div class="prod-details">
+    <a
+      [routerLink]="['/product-detail/' + item.id]"
+      routerLinkActive="router-link-active"
+      style="text-decoration: none; color: inherit"
+    >
+      <h6>{{ item.name }}</h6>
+    </a>
+
+    <p>
+      <b>Price: ₹{{ item.price }}</b>
+    </p>
+    <p>
+      <span>Color: {{ item.color }}</span
+      ><span>Category: {{ item.category }}</span>
+    </p>
+    <p>{{ item.description }}</p>
+  </div>
+</div>

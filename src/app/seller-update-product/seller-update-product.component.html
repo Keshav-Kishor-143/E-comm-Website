@@ -1,0 +1,124 @@
+<div class="form-decoration">
+  <h3>Update Product Details</h3>
+  <!-- <h1 class="h1-Heading-Style">Update Product Details</h1> -->
+  <!-- <p class="success-msg">{{ updateSuccessfulMsg }}</p> -->
+  <form
+    class="common-form"
+    #updateProduct="ngForm"
+    (ngSubmit)="onUpdate(updateProduct.value)"
+  >
+    <div class="form-group">
+      <label for="name">Product Name</label>
+      <input
+        id="name"
+        class="form-input"
+        type="text"
+        name="name"
+        placeholder="Enter Product Name"
+        [ngModel]="productData?.name"
+        required
+        #name="ngModel"
+      />
+      <div *ngIf="name.invalid && (name.dirty || name.touched)">
+        <div class="error-p" *ngIf="name.errors?.['required']">
+          Name is required.
+        </div>
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label for="price">Product Price</label>
+      <div class="input-group">
+        <span class="input-group-text">₹</span>
+        <input
+        id="price"
+        class="form-input"
+        type="text"
+        name="price"
+        placeholder="Enter Product Price"
+        [ngModel]="productData?.price"
+        required
+        #price="ngModel"
+        (input)="formatPrice($event)"
+      />
+      </div>
+
+      <div *ngIf="price.dirty || price.touched">
+        <div class="error-p" *ngIf="price.errors?.['required']">
+          Price is required.
+        </div>
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label for="color">Product Color</label>
+      <input
+        id="color"
+        class="form-input"
+        type="text"
+        name="color"
+        placeholder="Enter Product Color"
+        [ngModel]="productData?.color"
+        required
+        #color="ngModel"
+      />
+      <div *ngIf="color.dirty || color.touched">
+        <div class="error-p" *ngIf="color.errors?.['required']">
+          Color is required.
+        </div>
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label for="category">Product Category</label>
+      <input
+        id="category"
+        class="form-input"
+        type="text"
+        name="category"
+        placeholder="Enter Product Category"
+        [ngModel]="productData?.category"
+        required
+        #category="ngModel"
+      />
+      <div *ngIf="category.dirty || category.touched">
+        <div class="error-p" *ngIf="category.errors?.['required']">
+          Category of the product is required.
+        </div>
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label for="description">Product Description</label>
+      <input
+        id="description"
+        type="text"
+        class="form-input"
+        name="description"
+        placeholder="Enter Product Description"
+        [ngModel]="productData?.description"
+      />
+    </div>
+
+    <div class="form-group">
+      <label for="imageUrl">Product URL</label>
+      <input
+        id="imageUrl"
+        class="form-input"
+        type="text"
+        name="imageUrl"
+        placeholder="Enter Product URL"
+        [ngModel]="productData?.imageUrl"
+        required
+        #imageUrl="ngModel"
+      />
+      <div *ngIf="imageUrl.dirty || imageUrl.touched">
+        <div class="error-p" *ngIf="imageUrl.errors?.['required']">
+          Image of the product is required.
+        </div>
+      </div>
+    </div>
+
+    <button type="submit" class="form-button">Update</button>
+  </form>
+</div>

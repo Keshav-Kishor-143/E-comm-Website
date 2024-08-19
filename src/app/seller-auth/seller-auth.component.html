@@ -1,0 +1,146 @@
+<div class="seller-auth">
+  <div *ngIf="!showLogin" class="signup">
+    <h3>Welcome Seller!</h3>
+    <p style="color: black">Create an account</p>
+    <form
+      #sellerSignUp="ngForm"
+      (ngSubmit)="onSubmit(sellerSignUp)"
+      class="common-form"
+      novalidate
+    >
+      <div class="form-group">
+        <label for="name">Name</label>
+        <input
+          id="name"
+          class="form-input"
+          type="text"
+          ngModel
+          name="name"
+          placeholder="Enter name"
+          required
+          #name="ngModel"
+        />
+        <div *ngIf="name.invalid && (name.dirty || name.touched)">
+          <div *ngIf="name.errors?.['required']">Name is required.</div>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label for="email-signup">Email</label>
+        <input
+          id="email-signup"
+          class="form-input"
+          type="email"
+          ngModel
+          name="email"
+          placeholder="Enter email"
+          required
+          #email="ngModel"
+        />
+        <div *ngIf="email.invalid && (email.dirty || email.touched)">
+          <div *ngIf="email.errors?.['required']">Email is required.</div>
+          <div *ngIf="email.errors?.['email']">Enter a valid email.</div>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label for="password-signup">Password</label>
+        <input
+          id="password-signup"
+          class="form-input"
+          type="password"
+          ngModel
+          name="password"
+          placeholder="Enter password"
+          required
+          #password="ngModel"
+        />
+        <div *ngIf="password.invalid && (password.dirty || password.touched)">
+          <div *ngIf="password.errors?.['required']">Password is required.</div>
+        </div>
+      </div>
+
+      <button
+        type="submit"
+        class="form-button"
+        [disabled]="sellerSignUp.invalid"
+      >
+        Signup
+      </button>
+      <a class="auth-toggle-link" (click)="openLogin()">
+        Already have an account? Click to login.
+      </a>
+    </form>
+  </div>
+
+  <!-- LOGIN UI -->
+  <div class="seller-login">
+    <div *ngIf="showLogin" class="login">
+      <h3>Welcome Seller!</h3>
+      <p style="color: black">Login to your account</p>
+      <form
+        #sellerLogin="ngForm"
+        (ngSubmit)="onLoginSubmit(sellerLogin)"
+        class="common-form"
+        novalidate
+      >
+        <div class="form-group">
+          <label for="email-login">Email</label>
+          <input
+            id="email-login"
+            class="form-input"
+            type="email"
+            ngModel
+            name="email"
+            placeholder="Enter email"
+            required
+            #email="ngModel"
+            (input)="resetLoginError()"
+          />
+          <div *ngIf="email.invalid && (email.dirty || email.touched)">
+            <div *ngIf="email.errors?.['required']" style="color: red; margin-top: 2px">
+              Email is required.
+            </div>
+            <div *ngIf="email.errors?.['email']" style="color: red; margin-top: 2px">
+              Enter a valid email.
+            </div>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label for="password-login">Password</label>
+          <input
+            id="password-login"
+            class="form-input"
+            type="password"
+            ngModel
+            name="password"
+            placeholder="Enter password"
+            required
+            #password="ngModel"
+            (input)="resetLoginError()"
+          />
+          <div *ngIf="password.invalid && (password.dirty || password.touched)" style="color: red; margin-top: 2px">
+            <div *ngIf="password.errors?.['required']" style="color: red; margin-top: 2px">
+              Password is required.
+            </div>
+          </div>
+        </div>
+
+        <div *ngIf="loginError" class="error-message" style="color: red; margin-top: 2px">
+          {{ loginError }}
+        </div>
+        <button
+          type="submit"
+          class="form-button"
+          [disabled]="sellerLogin.invalid"
+        >
+          Login
+        </button>
+        <a class="auth-toggle-link" (click)="openSignUp()">
+          Don't have an account? Click to sign up.
+        </a>
+      </form>
+    </div>
+  </div>
+</div>

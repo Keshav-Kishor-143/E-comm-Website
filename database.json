@@ -1,0 +1,155 @@
+{
+  "seller": [
+    {
+      "id": "3cc8",
+      "name": "Keshav Kishor",
+      "email": "keshav@seller.com",
+      "password": "1234"
+    },
+    {
+      "id": "c400",
+      "name": "Keshav",
+      "email": "keshav.kishor@zingworks.in",
+      "password": "1234"
+    }
+  ],
+  "user": [],
+  "products": [
+    {
+      "name": "Samsung Note 20",
+      "price": "1,00,000",
+      "color": "Grey",
+      "category": "Mobile",
+      "description": "Samsung's latest of the note series 20",
+      "imageUrl": "https://www.sammobile.com/wp-content/uploads/2019/06/galaxy-note-10-pro-leak-2.png",
+      "id": "101f"
+    },
+    {
+      "name": "Samsung Galaxy S23 Ultra",
+      "price": "1,27,800",
+      "color": "Grey",
+      "category": "Mobile",
+      "description": "Samsung's latest S series mobile phone",
+      "imageUrl": "https://www.sammobile.com/wp-content/uploads/2023/02/Samsung-Galaxy-S23-Ultra-Misty-Lilac-Back.jpg",
+      "id": "6f65"
+    },
+    {
+      "name": "Motorola Edge 50 pro",
+      "price": "50,000",
+      "color": "Black",
+      "category": "Mobile",
+      "description": "Motorola's edge series",
+      "imageUrl": "https://i.gadgets360cdn.com/large/motorola_Edge_50_pro_motorola_1_1712123550245.jpg?downsize=950:*",
+      "id": "9af9"
+    },
+    {
+      "name": "Nike Running Shoes",
+      "price": "20,000",
+      "color": "Black",
+      "category": "Footwear",
+      "description": "Rubber · Lace-up Boots · Casual",
+      "imageUrl": "https://encrypted-tbn2.gstatic.com/shopping?q=tbn:ANd9GcR4G-XwRgPOcpRmF7ZcpkYeT_Yn5InixGmPWIdH33owr_hR5ChUNIfJSRNXaZeoBtx71iTH1O3JZCKlCl2KUMMSJIO38EZu_-U0Nv8c7HVguQ6rKWIepnNPhQ&usqp=CAE",
+      "id": "bc83"
+    },
+    {
+      "name": "Olive Grey Stripe Printed Shirt",
+      "price": "1,000",
+      "color": "Olive",
+      "category": "Clothes",
+      "description": "Full Sleeves Printed Design Stand Collar Curved Hem Design",
+      "imageUrl": "https://vestirio.com/cdn/shop/products/37020549_37_1080x.webp?v=1657954847",
+      "id": "056d"
+    },
+    {
+      "name": "Roadster Jeans",
+      "price": "3,000",
+      "color": "Blue",
+      "category": "Clothes",
+      "description": "Clothing",
+      "imageUrl": "https://5.imimg.com/data5/SELLER/Default/2023/1/MB/DA/QE/75329331/30-10046869-roadster-original-imafzp9m3hkad8fh-1000x1000.webp",
+      "id": "6785"
+    },
+    {
+      "name": "Apple Macbook Air",
+      "price": "1,50,000",
+      "color": "Gold",
+      "category": "Laptop",
+      "description": "Macbook ",
+      "imageUrl": "https://www.apple.com/newsroom/images/live-action/wwdc-2023/standard/macbook-air-15-in/Apple-WWDC23-MacBook-Air-15-in-hero-230605_big.jpg.large_2x.jpg",
+      "id": "b0a0"
+    },
+    {
+      "name": "HP Full HD Laptop",
+      "price": "65,000",
+      "color": "Black",
+      "category": "Laptop",
+      "description": "HP 15 Intel Core I5 Full HD Laptop, Screen Size: 15.6 Inches",
+      "imageUrl": "https://5.imimg.com/data5/YR/DY/FR/SELLER-18983365/hp-15-intel-core-i5-full-hd-laptop-1000x1000.jpg",
+      "id": "db31"
+    },
+    {
+      "name": "SONY BRAVIA LED TV",
+      "price": "80,000",
+      "color": "Black",
+      "category": "TV",
+      "description": "Sony Bravia 164 cm (65 inches) 4K Ultra HD Smart LED Google TV KD-65X74L (Black)",
+      "imageUrl": "https://m.media-amazon.com/images/I/81MRU+3RJLL._SL1500_.jpg",
+      "id": "74a1"
+    },
+    {
+      "name": "Safari Suitcase",
+      "price": "5,000",
+      "color": "Blue",
+      "category": "Bags",
+      "description": "Safari Plastic Serene Hardside Suitcase, Lightweight And Scratch Resistant, Fixed Combination Lock, 360 Degree Dual Wheels, Telescopic Handle, Check-In Luggage Trolley Bag, Medium, 65Cm",
+      "imageUrl": "https://m.media-amazon.com/images/I/61rkqN2t62L._SL1500_.jpg",
+      "id": "a81d"
+    },
+    {
+      "name": "Shocknshop Stainless Steel Watch",
+      "price": "3,000",
+      "color": "Black",
+      "category": "Watches",
+      "description": "Shocknshop Stainless Steel Watch Series Analogue Men's Watch (Black Dial Mens Long Colored Strap) -W219",
+      "imageUrl": "https://m.media-amazon.com/images/I/51QBJ7Ag9oL._SY879_.jpg",
+      "id": "5736"
+    },
+    {
+      "name": "Printed Suit Set",
+      "price": "1,000",
+      "color": "Green",
+      "category": "Clothes",
+      "description": "Women Cotton Straight Printed Suit Set",
+      "imageUrl": "https://m.media-amazon.com/images/I/61yQKJKPyPL._SX679_.jpg",
+      "id": "e81a"
+    },
+    {
+      "name": "SONY Speakers",
+      "price": "15,000",
+      "color": "Black",
+      "category": "Speakers",
+      "description": "Sony HT-S20R Real 5.1ch Dolby Digital Soundbar for TV with subwoofer and Compact Rear Speakers, 5.1ch Home Theatre System (400W,Bluetooth & USB Connectivity, HDMI & Optical connectivity)",
+      "imageUrl": "https://m.media-amazon.com/images/I/71h7fLNEQPL._SX679_.jpg",
+      "id": "47fc"
+    },
+    {
+      "name": "Oneplus Open ",
+      "price": "1,50,000",
+      "color": "Maroon",
+      "category": "Mobile",
+      "description": "Oneplus Open (Apex Edition,16GB RAM, 1TB Storage)",
+      "imageUrl": "https://m.media-amazon.com/images/I/81B4UqMfjeL._SX679_.jpg",
+      "id": "5151"
+    },
+    {
+      "name": "Whirlpool Single Door Refrigerator ",
+      "price": "15,000",
+      "color": "Blue",
+      "category": "Refrigerator",
+      "description": "Whirlpool 184 L 2 Star Direct-Cool Single Door Refrigerator (205 WDE CLS 2S SAPPHIRE BLUE-Z, Blue,2023 Model)",
+      "imageUrl": "https://m.media-amazon.com/images/I/51W0opp83WL._SX679_.jpg",
+      "id": "2304"
+    }
+  ],
+  "cart": []
+}

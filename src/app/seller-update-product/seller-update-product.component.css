@@ -1,0 +1,58 @@
+body,
+html {
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  font-family: Arial, sans-serif; /* Add a more readable font */
+}
+
+.form-decoration {
+  text-align: center;
+  width: auto;
+  max-width: 1200px; /* Optional: Limit the maximum width */
+  margin: 20px auto; /* Center the div horizontally and add padding at the top */
+  padding: 20px;
+  border-radius: 10px;
+  background-color: rgba(255, 255, 255, 0.8);
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Optional: Add a slight shadow */
+}
+
+.form-group {
+  margin-bottom: 15px;
+}
+
+.form-group label {
+  display: block;
+  font-weight: bold;
+  margin-bottom: 5px;
+}
+
+.success-msg {
+  color: green;
+  font-style: oblique;
+  font-family: Georgia, "Times New Roman", Times, serif;
+}
+
+
+.input-group {
+  display: flex;
+  align-items: center;
+}
+
+.input-group-text {
+  padding: 0.5rem;
+  background-color: #e9ecef;
+  border: 1px solid #ced4da;
+  border-right: none;
+  border-radius: 0.25rem 0 0 0.25rem;
+  font-size: 1rem;
+  height: 35px;
+}
+
+.form-input {
+  flex: 1;
+  padding: 0.5rem;
+  border: 1px solid #ced4da;
+  border-radius: 0 0.25rem 0.25rem 0;
+  font-size: 1rem;
+}
