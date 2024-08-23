@@ -6,10 +6,13 @@
       [openDelay]="300"
       [closeDelay]="500"
       triggers="mouseenter:mouseleave"
+      style="cursor: pointer;" 
       >E-Cart</a
     >
   </h1>
-  <div class="nav-search" *ngIf="menuType === 'default'">
+
+  <!-- Search Box for Default and User Menu -->
+  <div class="nav-search" *ngIf="menuType === 'default' || menuType === 'user'">
     <input
       type="text"
       #searchInput
@@ -48,56 +51,47 @@
 
   <div [ngSwitch]="menuType" class="menu">
     <ul *ngSwitchCase="'default'" class="default-list">
-      <!-- <li>
-        <a [routerLink]="['']" routerLinkActive="router-link-active">Home</a>
-      </li> -->
       <li>
         <a [routerLink]="['/seller-auth']" routerLinkActive="router-link-active"
-          >Seller</a
-        >
+          style="cursor: pointer;" >Seller</a>
       </li>
       <li>
         <a [routerLink]="['/user-auth']" routerLinkActive="router-link-active"
-          >User</a
-        >
+          style="cursor: pointer;" >User</a>
       </li>
       <li>
         <a [routerLink]="['/cart']" routerLinkActive="router-link-active"
-          >Cart(0)</a
-        >
+          style="cursor: pointer;" >Cart(0)</a>
       </li>
     </ul>
+
     <ul *ngSwitchCase="'user'" class="user-list">
       <li style="font-family: Gill Sans; font-size: large">
         Hi, {{ userName | titlecase }}
       </li>
       <li>
         <a [routerLink]="['/cart']" routerLinkActive="router-link-active"
-          >Cart(0)</a
-        >
+          style="cursor: pointer;" >Cart(0)</a>
       </li>
       <li>
-        <a (click)="logout()">Logout</a>
+        <a style="cursor: pointer;" (click)="logout()">Logout</a>
       </li>
     </ul>
+
     <ul *ngSwitchCase="'seller'" class="seller-list">
       <li style="font-family: Gill Sans; font-size: large">
         Hi, {{ sellerName | titlecase }}
       </li>
       <li>
         <a [routerLink]="['/seller-auth']" routerLinkActive="router-link-active"
-          >Your Products</a
-        >
+          style="cursor: pointer;" >Your Products</a>
       </li>
       <li>
-        <a
-          [routerLink]="['/seller-add-product']"
-          routerLinkActive="router-link-active"
-          >Add Product</a
-        >
+        <a [routerLink]="['/seller-add-product']" routerLinkActive="router-link-active"
+          style="cursor: pointer;" >Add Product</a>
       </li>
       <li>
-        <a (click)="logout()">Logout</a>
+        <a style="cursor: pointer;" (click)="logout()">Logout</a>
       </li>
     </ul>
   </div>
