@@ -63,18 +63,15 @@ export class HeaderComponent implements OnInit {
           typeof localStorage !== 'undefined'
         ) {
           // Check if the user is logged in as a seller and set menuType accordingly
-          if (
-            this.localStorage.getItem('seller') &&
-            event.url.includes('seller')
-          ) {
+          if (this.localStorage.getItem('seller')) {
             this.menuType = 'seller';
             let sellerNameStore = localStorage.getItem('seller');
-            console.warn("sellerNameStore-->",sellerNameStore);
+            console.warn('sellerNameStore-->', sellerNameStore);
 
             let sellerData = sellerNameStore && JSON.parse(sellerNameStore);
-            console.warn("sellerData-->",sellerData);
+            console.warn('sellerData-->', sellerData);
             this.sellerName = sellerData.name;
-            console.warn("Name-->",this.sellerName);
+            console.warn('Name-->', this.sellerName);
           } else if (this.localStorage.getItem('user')) {
             this.menuType = 'user';
             let userNameStore = localStorage.getItem('user');
