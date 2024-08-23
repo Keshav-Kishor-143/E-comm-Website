@@ -32,6 +32,9 @@ export class HeaderComponent implements OnInit {
   // Stores the seller's name, if the user is logged in as a seller
   sellerName: string = '';
 
+  // Stores the user's name, if the user is logged in as a user
+  userName: string = '';
+
   // Criteria used for searching products (name, category, or price)
   searchCriteria = {
     name: '',
@@ -66,8 +69,17 @@ export class HeaderComponent implements OnInit {
           ) {
             this.menuType = 'seller';
             let sellerNameStore = localStorage.getItem('seller');
+            console.warn("sellerNameStore-->",sellerNameStore);
+
             let sellerData = sellerNameStore && JSON.parse(sellerNameStore);
+            console.warn("sellerData-->",sellerData);
             this.sellerName = sellerData.name;
+            console.warn("Name-->",this.sellerName);
+          } else if (this.localStorage.getItem('user')) {
+            this.menuType = 'user';
+            let userNameStore = localStorage.getItem('user');
+            let user = userNameStore && JSON.parse(userNameStore);
+            this.userName = user.name;
           } else {
             this.menuType = 'default';
           }
@@ -81,10 +93,16 @@ export class HeaderComponent implements OnInit {
     return text.charAt(0).toUpperCase() + text.slice(1);
   }
 
-  // Logs out the seller and redirects them to the seller authentication page
+  // Logs out the seller/user and redirects them to the authentication page
   logout() {
-    localStorage.removeItem('seller');
-    this.router.navigate(['/seller-auth']);
+    if (this.localStorage.getItem('seller')) {
+      localStorage.removeItem('seller');
+      this.router.navigate(['/seller-auth']);
+    }
+    if (this.localStorage.getItem('user')) {
+      localStorage.removeItem('user');
+      this.router.navigate(['/user-auth']);
+    }
   }
 
   // Processes the user's search input and queries the ProductsService for results

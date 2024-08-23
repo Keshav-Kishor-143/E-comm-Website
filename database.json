@@ -1,15 +1,21 @@
 {
   "seller": [
     {
-      "id": "3cc8",
-      "name": "Keshav Kishor",
-      "email": "keshav@seller.com",
-      "password": "1234"
-    },
-    {
       "id": "c400",
       "name": "Keshav",
       "email": "keshav.kishor@zingworks.in",
+      "password": "1234"
+    },
+    {
+      "id": "9099",
+      "name": "Nitin",
+      "email": "nitin.jewalikar@zingworks.in",
+      "password": "1234"
+    },
+    {
+      "id": "0c66",
+      "name": "Nitin",
+      "email": "nitin.jewalikar@zingworks.in",
       "password": "1234"
     }
   ],

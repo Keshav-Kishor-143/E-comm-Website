@@ -51,27 +51,7 @@ export class SellerAuthComponent implements OnInit {
   }
 
   login(data: login) {
-    this.seller.sellerLogin(data).subscribe(
-      (result: any) => {
-        if (result && result.status === 200 && result.body && result.body.length > 0) {
-          const seller = result.body[0];
-          if (seller.password === data.password) {
-            this.seller.isSellerLoggedIn.next(true);
-            this.localStorage.setItem('seller', JSON.stringify(seller));
-            this.router.navigate(['seller-home']);
-          } else {
-            this.loginError = 'Incorrect password';
-          }
-        } else {
-          this.loginError = 'Email not found';
-        }
-        // console.warn('result =>', result);
-      },
-      (error) => {
-        // console.error('Login failed', error);
-        this.loginError = error;
-      }
-    );
+    this.seller.sellerLogin(data);
   }
 
   openLogin() {
