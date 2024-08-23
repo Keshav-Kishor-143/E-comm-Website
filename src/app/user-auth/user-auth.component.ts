@@ -3,21 +3,27 @@ import { Component } from '@angular/core';
 import { FormsModule, NgForm } from '@angular/forms';
 import { Router, RouterModule } from '@angular/router';
 import { LocalStorageService } from '../services/local-storage.service';
+import { login, signUp } from '../data-type';
+import { UserService } from '../services/user.service';
 
 @Component({
   selector: 'app-user-auth',
   standalone: true,
-  imports: [FormsModule,CommonModule,RouterModule],
+  imports: [FormsModule, CommonModule, RouterModule],
   templateUrl: './user-auth.component.html',
-  styleUrl: './user-auth.component.css'
+  styleUrl: './user-auth.component.css',
 })
 export class UserAuthComponent {
   showLogin: boolean = false;
   loginError: string = '';
-  constructor( private router: Router, private localStorage:LocalStorageService) {}
+  constructor(
+    private router: Router,
+    private localStorage: LocalStorageService,
+    private userService: UserService
+  ) {}
 
   ngOnInit(): void {
-
+    this.userService.reloadUser();
   }
 
   onSubmit(form: NgForm) {
@@ -28,7 +34,7 @@ export class UserAuthComponent {
       });
       return;
     }
-    // this.signUp(form.value);
+    this.signUp(form.value);
   }
 
   onLoginSubmit(form: NgForm) {
@@ -39,35 +45,37 @@ export class UserAuthComponent {
       });
       return;
     }
-    // this.login(form.value);
+    this.login(form.value);
   }
 
-  // signUp(data: signUp) {
-  // }
+  signUp(data: signUp) {
+    this.userService.userSignUp(data);
+  }
 
-  // login(data: login) {
-  //   this.seller.userLogin(data).subscribe(
-  //     (result: any) => {
-  //       if (result && result.status === 200 && result.body && result.body.length > 0) {
-  //         const seller = result.body[0];
-  //         if (seller.password === data.password) {
-  //           this.seller.isSellerLoggedIn.next(true);
-  //           this.localStorage.setItem('seller', JSON.stringify(seller));
-  //           this.router.navigate(['seller-home']);
-  //         } else {
-  //           this.loginError = 'Incorrect password';
-  //         }
-  //       } else {
-  //         this.loginError = 'Email not found';
-  //       }
-  //       // console.warn('result =>', result);
-  //     },
-  //     (error) => {
-  //       // console.error('Login failed', error);
-  //       this.loginError = 'Login failed due to server error';
-  //     }
-  //   );
-  // }
+
+  login(data: login) {
+    this.userService.userLogin(data).subscribe(
+      (result: any) => {
+        if (result && result.status === 200 && result.body && result.body.length > 0) {
+          const seller = result.body[0];
+          if (seller.password === data.password) {
+            this.userService.isUserLoggedIn.next(true);
+            this.localStorage.setItem('user', JSON.stringify(seller));
+            this.router.navigate(['home']);
+          } else {
+            this.loginError = 'Incorrect password';
+          }
+        } else {
+          this.loginError = 'Email not found';
+        }
+        // console.warn('result =>', result);
+      },
+      (error) => {
+        // console.error('Login failed', error);
+        this.loginError = error;
+      }
+    );
+  }
 
   openLogin() {
     this.showLogin = true;

@@ -9,6 +9,7 @@ import { SellerUpdateProductComponent } from './seller-update-product/seller-upd
 import { SearchComponent } from './search/search.component';
 import { ProductDetailComponent } from './product-detail/product-detail.component';
 import { UserAuthComponent } from './user-auth/user-auth.component';
+import { userAuthGuard } from './user-auth.guard';
 
 export const routes: Routes = [
 
@@ -35,7 +36,7 @@ export const routes: Routes = [
   {
     path: 'seller-home',
     component: SellerHomePageComponent,
-    canActivate: [sellerAuthGuard],
+    canActivate: [sellerAuthGuard,userAuthGuard],
   },
   {
     path: 'seller-add-product',

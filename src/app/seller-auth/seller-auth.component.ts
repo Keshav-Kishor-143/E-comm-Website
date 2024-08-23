@@ -22,9 +22,6 @@ export class SellerAuthComponent implements OnInit {
 
   ngOnInit(): void {
     this.seller.reloadSeller();
-    this.seller.isSellerLoggedIn.subscribe((isLoggedIn) => {
-      // console.log('Is Seller Logged In:', isLoggedIn);
-    });
   }
 
   onSubmit(form: NgForm) {
@@ -50,11 +47,11 @@ export class SellerAuthComponent implements OnInit {
   }
 
   signUp(data: signUp) {
-    this.seller.userSignUp(data);
+    this.seller.sellerSignUp(data);
   }
 
   login(data: login) {
-    this.seller.userLogin(data).subscribe(
+    this.seller.sellerLogin(data).subscribe(
       (result: any) => {
         if (result && result.status === 200 && result.body && result.body.length > 0) {
           const seller = result.body[0];
@@ -72,7 +69,7 @@ export class SellerAuthComponent implements OnInit {
       },
       (error) => {
         // console.error('Login failed', error);
-        this.loginError = 'Login failed due to server error';
+        this.loginError = error;
       }
     );
   }

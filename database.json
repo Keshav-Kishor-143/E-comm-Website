@@ -13,7 +13,14 @@
       "password": "1234"
     }
   ],
-  "user": [],
+  "user": [
+    {
+      "id": "27e0",
+      "name": "Carl",
+      "email": "carl@gmail.com",
+      "password": "1234"
+    }
+  ],
   "products": [
     {
       "name": "Samsung Note 20",

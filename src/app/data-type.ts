@@ -10,12 +10,25 @@ export interface login{
 }
 
 export interface product {
-  id: string;
-  name: string;
-  price: string;
-  color: string;
-  category: string;
-  description: string;
-  imageUrl: string;
+  id: string,
+  name: string,
+  price: string,
+  color: string,
+  category: string,
+  description: string,
+  imageUrl: string,
+  quantity:undefined|number
 }
 
+export interface cart{
+  id: string|undefined,
+  name: string,
+  price: string,
+  color: string,
+  category: string,
+  description: string,
+  imageUrl: string,
+  quantity:undefined|number,
+  userId:string|undefined,
+  productId:string|undefined
+}
