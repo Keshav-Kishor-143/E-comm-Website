@@ -67,6 +67,19 @@
         >
       </li>
     </ul>
+    <ul *ngSwitchCase="'user'" class="user-list">
+      <li style="font-family: Gill Sans; font-size: large">
+        Hi, {{ userName | titlecase }}
+      </li>
+      <li>
+        <a [routerLink]="['/cart']" routerLinkActive="router-link-active"
+          >Cart(0)</a
+        >
+      </li>
+      <li>
+        <a (click)="logout()">Logout</a>
+      </li>
+    </ul>
     <ul *ngSwitchCase="'seller'" class="seller-list">
       <li style="font-family: Gill Sans; font-size: large">
         Hi, {{ sellerName | titlecase }}

@@ -12,6 +12,8 @@ import { LocalStorageService } from './local-storage.service';
 export class SellerService {
   private readonly sellerUrl = 'http://localhost:3000/seller';
   isSellerLoggedIn = new BehaviorSubject<boolean>(false);
+  loginError: string = '';
+
 
   constructor(
     private http: HttpClient,
@@ -37,9 +39,26 @@ export class SellerService {
   }
 
   //Seller login api call
-  sellerLogin(data: login): Observable<HttpResponse<any>> {
+  sellerLogin(data: login): void {
     const url = `${this.sellerUrl}?email=${data.email}&password=${data.password}`;
-    return this.http.get<HttpResponse<any>>(url, { observe: 'response' });
+    this.http.get<HttpResponse<any>>(url, { observe: 'response' }).pipe(
+      map((response: HttpResponse<any>) => {
+        if (response && response.status === 200 && response.body && response.body.length > 0) {
+          const seller = response.body[0];
+          if (seller.password === data.password) {
+            this.isSellerLoggedIn.next(true);
+            this.localStorage.setItem('seller', JSON.stringify(seller));
+            this.router.navigate(['seller-home']);
+          } else {
+            this.loginError = 'Incorrect password';
+          }
+        } else {
+          this.loginError = 'Email not found';
+        }
+      }),
+      catchError(this.handleError)
+    )
+    .subscribe();
   }
 
   //Reload Seller data based on the Authentication gaurd

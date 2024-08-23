@@ -36,7 +36,7 @@ export const routes: Routes = [
   {
     path: 'seller-home',
     component: SellerHomePageComponent,
-    canActivate: [sellerAuthGuard,userAuthGuard],
+    canActivate: [sellerAuthGuard],
   },
   {
     path: 'seller-add-product',
