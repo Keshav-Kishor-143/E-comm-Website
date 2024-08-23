@@ -1,27 +1,29 @@
-import { routes } from './../app.routes';
-import { Component, OnInit } from '@angular/core';
-import { FormsModule, NgForm } from '@angular/forms';
-import { SellerService } from '../services/seller.service';
-import { Router, RouterModule } from '@angular/router';
-import { login, signUp } from '../data-type';
 import { CommonModule } from '@angular/common';
+import { Component } from '@angular/core';
+import { FormsModule, NgForm } from '@angular/forms';
+import { Router, RouterModule } from '@angular/router';
 import { LocalStorageService } from '../services/local-storage.service';
+import { login, signUp } from '../data-type';
+import { UserService } from '../services/user.service';
 
 @Component({
-  selector: 'app-seller-auth',
+  selector: 'app-user-auth',
   standalone: true,
-  imports: [FormsModule, RouterModule, CommonModule],
-  templateUrl: './seller-auth.component.html',
-  styleUrl: './seller-auth.component.css',
+  imports: [FormsModule, CommonModule, RouterModule],
+  templateUrl: './user-auth.component.html',
+  styleUrl: './user-auth.component.css',
 })
-export class SellerAuthComponent implements OnInit {
+export class UserAuthComponent {
   showLogin: boolean = false;
   loginError: string = '';
-
-  constructor(private seller: SellerService, private router: Router, private localStorage:LocalStorageService) {}
+  constructor(
+    private router: Router,
+    private localStorage: LocalStorageService,
+    private userService: UserService
+  ) {}
 
   ngOnInit(): void {
-    this.seller.reloadSeller();
+    this.userService.reloadUser();
   }
 
   onSubmit(form: NgForm) {
@@ -47,18 +49,19 @@ export class SellerAuthComponent implements OnInit {
   }
 
   signUp(data: signUp) {
-    this.seller.sellerSignUp(data);
+    this.userService.userSignUp(data);
   }
 
+
   login(data: login) {
-    this.seller.sellerLogin(data).subscribe(
+    this.userService.userLogin(data).subscribe(
       (result: any) => {
         if (result && result.status === 200 && result.body && result.body.length > 0) {
           const seller = result.body[0];
           if (seller.password === data.password) {
-            this.seller.isSellerLoggedIn.next(true);
-            this.localStorage.setItem('seller', JSON.stringify(seller));
-            this.router.navigate(['seller-home']);
+            this.userService.isUserLoggedIn.next(true);
+            this.localStorage.setItem('user', JSON.stringify(seller));
+            this.router.navigate(['home']);
           } else {
             this.loginError = 'Incorrect password';
           }

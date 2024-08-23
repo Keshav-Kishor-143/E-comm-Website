@@ -131,9 +131,12 @@ export class HeaderComponent implements OnInit {
   }
 
   // Handles item selection from the search results, navigates to the search result page
-  onSelectItem(item: product) {
-    this.submitSearchResult(item.name);
-  }
+  // onSelectItem(item: product) {
+  //   // this.submitSearchResult(item.name);
+  //   this.router.navigate([`/product-detail/${item.id}`]);
+  //   this.searchResult = [];
+  //   this.searchResultVisible = false; // Hide search results after submitting
+  // }
 
   // Submits the search result, navigates to the search results page, and clears the dropdown
   submitSearchResult(value: String) {

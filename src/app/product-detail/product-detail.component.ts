@@ -14,7 +14,7 @@ import { FormsModule } from '@angular/forms';
 })
 export class ProductDetailComponent implements OnInit {
   productData: undefined | product;
-  quantity: number = 1; 
+  quantity: number = 1;
 
   constructor(
     private activatedRoute: ActivatedRoute,
@@ -25,20 +25,20 @@ export class ProductDetailComponent implements OnInit {
     let productId = this.activatedRoute.snapshot.paramMap.get('id');
     // console.warn('Product Id->', productId);
     if (productId) {
-      this.productsService.getProductBasedOnId(productId).subscribe((result) => {
-        // console.warn(result);
-        this.productData = result;
-      });
+      this.productsService
+        .getProductBasedOnId(productId)
+        .subscribe((result) => {
+          // console.warn(result);
+          this.productData = result;
+        });
     }
   }
 
   increaseQuantity(): void {
-    this.quantity++;
+    if (this.quantity < 20) this.quantity++;
   }
 
   decreaseQuantity(): void {
-    if (this.quantity > 1) {
-      this.quantity--;
-    }
+    if (this.quantity > 1) this.quantity--;
   }
 }

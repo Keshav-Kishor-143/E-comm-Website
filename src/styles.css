@@ -27,6 +27,15 @@ body {
   text-align: center;
 }
 
+.user-auth {
+  display: flex;
+  justify-content: left;
+  align-items: center;
+  padding-top: 20px;
+  height: 100%;
+  text-align: center;
+}
+
 .signup,
 .login {
   border-radius: 10px;
