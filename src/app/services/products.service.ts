@@ -9,59 +9,63 @@ import { product } from '../data-type';
   providedIn: 'root',
 })
 export class ProductsService {
-  private baseUrl = 'http://localhost:3000/products'; // Centralized base URL
+  private baseUrlProducts = 'http://localhost:3000/products'; // Centralized base URL for products
 
   constructor(private http: HttpClient, private route: Router) {}
 
   // Add a new product
   addProduct(data: product): Observable<any> {
     return this.http
-      .post(`${this.baseUrl}`, data, { observe: 'response' })
+      .post(`${this.baseUrlProducts}`, data, { observe: 'response' })
       .pipe(catchError(this.handleError));
   }
 
   // Get the list of all products
   getProductList(): Observable<product[]> {
     return this.http
-      .get<product[]>(this.baseUrl)
+      .get<product[]>(this.baseUrlProducts)
       .pipe(catchError(this.handleError));
   }
 
   // Delete a product by ID
   deleteProductBasedOnId(id: string): Observable<any> {
     return this.http
-      .delete(`${this.baseUrl}/${id}`)
+      .delete(`${this.baseUrlProducts}/${id}`)
       .pipe(catchError(this.handleError));
   }
 
   // Get a product by ID
   getProductBasedOnId(id: string): Observable<product> {
     return this.http
-      .get<product>(`${this.baseUrl}/${id}`)
+      .get<product>(`${this.baseUrlProducts}/${id}`)
       .pipe(catchError(this.handleError));
   }
 
   // Update a product by ID
   updateProductBasedOnId(product: product): Observable<product> {
     return this.http
-      .put<product>(`${this.baseUrl}/${product.id}`, product)
+      .put<product>(`${this.baseUrlProducts}/${product.id}`, product)
       .pipe(catchError(this.handleError));
   }
 
-  // Get popular products (limit to 3)
+  // Get popular products (limit to 3) (currently not using limits)
   popularProducts(): Observable<product[]> {
-    return this.http
-      // .get<product[]>(`${this.baseUrl}?_limit=3`)
-      .get<product[]>(`${this.baseUrl}`)
-      .pipe(catchError(this.handleError));
+    return (
+      this.http
+        // .get<product[]>(`${this.baseUrl}?_limit=3`)
+        .get<product[]>(`${this.baseUrlProducts}`)
+        .pipe(catchError(this.handleError))
+    );
   }
 
-  // Get trendy products (limit to 8)
+  // Get trendy products (limit to 8) (currently not using limits)
   getTrendyProducts(): Observable<product[]> {
-    return this.http
-      // .get<product[]>(`${this.baseUrl}?_limit=8`)
-      .get<product[]>(`${this.baseUrl}`)
-      .pipe(catchError(this.handleError));
+    return (
+      this.http
+        // .get<product[]>(`${this.baseUrl}?_limit=8`)
+        .get<product[]>(`${this.baseUrlProducts}`)
+        .pipe(catchError(this.handleError))
+    );
   }
 
   // Search products based on a query object
@@ -75,11 +79,11 @@ export class ProductsService {
       }
     }
 
-    console.warn('Url->' + `${this.baseUrl}?${params}`);
     return this.http
-      .get<product[]>(`${this.baseUrl}?${params}`)
+      .get<product[]>(`${this.baseUrlProducts}?${params}`)
       .pipe(catchError(this.handleError));
   }
+
 
   // Centralized error handling
   private handleError(error: any): Observable<never> {

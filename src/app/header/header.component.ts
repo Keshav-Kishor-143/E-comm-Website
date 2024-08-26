@@ -1,3 +1,4 @@
+import { CartService } from './../services/cart.service';
 import { CommonModule } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
 import {
@@ -9,8 +10,8 @@ import {
 } from '@angular/router';
 import { LocalStorageService } from '../services/local-storage.service';
 import { NgbPopoverModule } from '@ng-bootstrap/ng-bootstrap';
-import { ProductsService } from '../services/products.service';
 import { product } from '../data-type';
+import { ProductsService } from '../services/products.service';
 
 @Component({
   selector: 'app-header',
@@ -48,9 +49,12 @@ export class HeaderComponent implements OnInit {
   // Flag to control the visibility of the search results dropdown
   searchResultVisible: boolean = false;
 
+  cartItems = 0;
+
   constructor(
     private router: Router,
     private localStorage: LocalStorageService,
+    private cartService: CartService,
     private productsService: ProductsService
   ) {}
 
@@ -82,6 +86,13 @@ export class HeaderComponent implements OnInit {
           }
         }
       }
+    });
+    let cartData = localStorage.getItem('localCart');
+    if (cartData) {
+      this.cartItems = JSON.parse(cartData).length;
+    }
+    this.cartService.totalCartData.subscribe((items) => {
+      this.cartItems = items.length;
     });
   }
 

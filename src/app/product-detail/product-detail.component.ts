@@ -1,9 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { ProductsService } from '../services/products.service';
-import { product } from '../data-type';
+import { cart, product } from '../data-type';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
+import { LocalStorageService } from '../services/local-storage.service';
+import { CartService } from '../services/cart.service';
 
 @Component({
   selector: 'app-product-detail',
@@ -15,10 +17,13 @@ import { FormsModule } from '@angular/forms';
 export class ProductDetailComponent implements OnInit {
   productData: undefined | product;
   quantity: number = 1;
+  removeCart = false;
+  cartData: product | undefined;
 
   constructor(
     private activatedRoute: ActivatedRoute,
-    private productsService: ProductsService
+    private productsService: ProductsService,
+    private cartsService: CartService
   ) {}
 
   ngOnInit(): void {
@@ -40,5 +45,48 @@ export class ProductDetailComponent implements OnInit {
 
   decreaseQuantity(): void {
     if (this.quantity > 1) this.quantity--;
+  }
+
+  addToCart() {
+    if (this.productData) {
+      this.productData.quantity = this.quantity;
+      if (!localStorage.getItem('user')) {
+        this.cartsService.cartDataToLocalStorage(this.productData);
+        this.removeCart = true;
+      } else {
+        let user = localStorage.getItem('user');
+        let userId = user && JSON.parse(user).id;
+        let cartData: cart = {
+          ...this.productData,
+          productId: this.productData.id,
+          userId,
+        };
+        delete cartData.id;
+        console.warn('User logged in --->', userId);
+        console.warn('Cart data--->', cartData);
+        this.cartsService.addToCart(cartData).subscribe((result) => {
+          if (result) {
+            this.cartsService.getCartItemsBasedOnId(userId);
+            this.removeCart = true;
+          }
+        });
+      }
+    }
+  }
+
+  removeFromCart(productId: string) {
+    if (!localStorage.getItem('user')) {
+      this.cartsService.removeCartItemFromLocalStorage(productId);
+    } else {
+      console.warn('cartData', this.cartData);
+
+      this.cartData &&
+        this.cartsService.removeCartItemFromDatabase(this.cartData.id).subscribe((result) => {
+          let user = localStorage.getItem('user');
+          let userId = user && JSON.parse(user).id;
+          this.cartsService.getCartItemsBasedOnId(userId);
+        });
+    }
+    this.removeCart = false;
   }
 }
