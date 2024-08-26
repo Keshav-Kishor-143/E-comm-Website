@@ -4,7 +4,6 @@ import { ProductsService } from '../services/products.service';
 import { cart, product } from '../data-type';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
-import { LocalStorageService } from '../services/local-storage.service';
 import { CartService } from '../services/cart.service';
 
 @Component({
@@ -27,16 +26,42 @@ export class ProductDetailComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
-    let productId = this.activatedRoute.snapshot.paramMap.get('id');
-    // console.warn('Product Id->', productId);
-    if (productId) {
+    let productId = this.activatedRoute.snapshot.paramMap.get('productId');
+    console.warn(productId);
+    productId &&
       this.productsService
         .getProductBasedOnId(productId)
         .subscribe((result) => {
-          // console.warn(result);
           this.productData = result;
+          let cartData = localStorage.getItem('localCart');
+          if (productId && cartData) {
+            let items = JSON.parse(cartData);
+            items = items.filter(
+              (item: product) => productId === item.id.toString()
+            );
+            if (items.length) {
+              this.removeCart = true;
+            } else {
+              this.removeCart = false;
+            }
+          }
+
+          let user = localStorage.getItem('user');
+          if (user) {
+            let userId = user && JSON.parse(user).id;
+            this.cartsService.getCartItemsBasedOnId(userId);
+
+            this.cartsService.totalCartData.subscribe((result) => {
+              let item = result.filter(
+                (item: product) => productId?.toString() === item.id?.toString()
+              );
+              if (item.length) {
+                this.cartData = item[0];
+                this.removeCart = true;
+              }
+            });
+          }
         });
-    }
   }
 
   increaseQuantity(): void {
@@ -79,13 +104,14 @@ export class ProductDetailComponent implements OnInit {
       this.cartsService.removeCartItemFromLocalStorage(productId);
     } else {
       console.warn('cartData', this.cartData);
-
       this.cartData &&
-        this.cartsService.removeCartItemFromDatabase(this.cartData.id).subscribe((result) => {
-          let user = localStorage.getItem('user');
-          let userId = user && JSON.parse(user).id;
-          this.cartsService.getCartItemsBasedOnId(userId);
-        });
+        this.cartsService
+          .removeCartItemFromDatabase(this.cartData.id)
+          .subscribe((result) => {
+            let user = localStorage.getItem('user');
+            let userId = user && JSON.parse(user).id;
+            this.cartsService.getCartItemsBasedOnId(userId);
+          });
     }
     this.removeCart = false;
   }

@@ -20,16 +20,16 @@ export class CartService {
   ) {}
 
   cartDataToLocalStorage(data: product) {
-    let currentCartData = [];
+    let currentCartData: product[] = [];
     let localCartData = this.local.getItem('CartItems');
     if (!localCartData) {
-      this.local.setItem('CartItems', JSON.stringify(data));
+      this.local.setItem('CartItems', JSON.stringify([data]));
       this.totalCartData.emit([data]);
     } else {
       currentCartData = JSON.parse(localCartData);
       currentCartData.push(data);
-      this.local.setItem('CartItems', JSON.stringify(data));
-      this.totalCartData.emit([currentCartData]);
+      this.local.setItem('CartItems', JSON.stringify(currentCartData));
+      this.totalCartData.emit(currentCartData);
     }
   }
 
