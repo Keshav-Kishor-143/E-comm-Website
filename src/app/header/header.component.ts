@@ -69,7 +69,7 @@ export class HeaderComponent implements OnInit {
           // Check if the user is logged in as a seller and set menuType accordingly
           if (this.localStorage.getItem('seller')) {
             this.menuType = 'seller';
-            let sellerNameStore = localStorage.getItem('seller');
+            let sellerNameStore = this.localStorage.getItem('seller');
             console.warn('sellerNameStore-->', sellerNameStore);
 
             let sellerData = sellerNameStore && JSON.parse(sellerNameStore);
@@ -87,7 +87,7 @@ export class HeaderComponent implements OnInit {
         }
       }
     });
-    let cartData = localStorage.getItem('localCart');
+    let cartData = this.localStorage.getItem('localCart');
     if (cartData) {
       this.cartItems = JSON.parse(cartData).length;
     }

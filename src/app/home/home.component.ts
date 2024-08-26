@@ -4,6 +4,7 @@ import { ProductsService } from '../services/products.service';
 import { product } from '../data-type';
 import { CommonModule } from '@angular/common';
 import { Router, RouterLink, RouterModule, RouterOutlet } from '@angular/router';
+import { CartService } from '../services/cart.service';
 
 @Component({
   selector: 'app-home',
@@ -16,7 +17,7 @@ export class HomeComponent implements OnInit {
 
   popularProductsData:undefined|product[]
   trendyProductsData:undefined|product[]
-  constructor(private productsService: ProductsService,private route:Router) {}
+  constructor(private productsService: ProductsService,private route:Router, private cartService:CartService) {}
   ngOnInit(): void {
     this.productsService.popularProducts().subscribe((result) => {
       this.popularProductsData = result

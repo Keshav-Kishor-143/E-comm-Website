@@ -27,42 +27,50 @@ export class ProductDetailComponent implements OnInit {
 
   ngOnInit(): void {
     let productId = this.activatedRoute.snapshot.paramMap.get('id');
-    // console.warn("init-->",productId);
-    productId &&
-      this.productsService
-        .getProductBasedOnId(productId)
-        .subscribe((result) => {
-          this.productData = result;
-          let cartData = localStorage.getItem('localCart');
-          if (productId && cartData) {
-            let items = JSON.parse(cartData);
-            items = items.filter(
-              (item: product) => productId === item.productId?.toString()
-            );
-            if (items.length) {
+
+    if (productId) {
+      // Fetch the product details from the service
+      this.productsService.getProductBasedOnId(productId).subscribe((result) => {
+        this.productData = result;
+
+        // Check local storage for the cart data
+        let localCartData = localStorage.getItem('localCart');
+
+        if (localCartData) {
+          let items: product[] = JSON.parse(localCartData);
+
+          // Find the product in the local storage
+          let storedItem = items.find(item => item.productId === productId);
+
+          if (storedItem) {
+            // Update the state based on the local storage
+            this.removeCart = true;
+            this.quantity = storedItem.quantity || 1;
+          } else {
+            this.removeCart = false;
+          }
+        }
+
+        // If user is logged in, also check the database
+        let user = localStorage.getItem('user');
+        if (user) {
+          let userId = JSON.parse(user).id;
+          this.cartsService.getCartItemsBasedOnId(userId);
+
+          this.cartsService.totalCartData.subscribe((result) => {
+            let item = result.find((item: product) => productId === item.productId);
+            console.warn("item in init--->",item);
+            if (item) {
+              this.cartData = item;
               this.removeCart = true;
-            } else {
-              this.removeCart = false;
+              this.quantity = item.quantity || 1;
             }
-          }
-
-          let user = localStorage.getItem('user');
-          if (user) {
-            let userId = user && JSON.parse(user).id;
-            this.cartsService.getCartItemsBasedOnId(userId);
-
-            this.cartsService.totalCartData.subscribe((result) => {
-              let item = result.filter(
-                (item: product) => productId?.toString() === item.id?.toString()
-              );
-              if (item.length) {
-                this.cartData = item[0];
-                this.removeCart = true;
-              }
-            });
-          }
-        });
+          });
+        }
+      });
+    }
   }
+
 
   increaseQuantity(): void {
     if (this.quantity < 20) this.quantity++;
@@ -89,7 +97,7 @@ export class ProductDetailComponent implements OnInit {
         delete cartData.id;
         console.warn('User logged in --->', userId);
         console.warn('Cart data--->', cartData);
-        this.cartsService.addToCart(cartData).subscribe((result) => {
+        this.cartsService.addToCartDatabase(cartData).subscribe((result) => {
           if (result) {
             this.cartsService.getCartItemsBasedOnId(userId);
             this.removeCart = true;
