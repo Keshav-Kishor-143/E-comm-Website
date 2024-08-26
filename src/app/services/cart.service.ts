@@ -36,7 +36,7 @@ export class CartService {
   // Get Cart items by ID from database
   getCartItemsBasedOnId(id: string) {
     return this.http
-      .get<product[]>(`${this.baseUrlCart}/${id}`, {
+      .get<product[]>(`${this.baseUrlCart}?userId=${id}`, {
         observe: 'response',
       })
       .subscribe((result) => {
@@ -47,8 +47,8 @@ export class CartService {
   }
 
   //Update Cart Database
-  addToCart(cartData: cart) {
-    return this.http.post('http://localhost:3000/cart', cartData);
+  addToCartDatabase(cartData: cart) {
+    return this.http.post(this.baseUrlCart, cartData);
   }
 
   //Method to remove cart items for non logged in user from Local Storage
@@ -64,7 +64,7 @@ export class CartService {
 
   //Method to remove cart items for logged in user from Database
   removeCartItemFromDatabase(cartId: string) {
-    return this.http.delete('http://localhost:3000/cart/' + cartId);
+    return this.http.delete(this.baseUrlCart + cartId);
   }
 
   // Centralized error handling

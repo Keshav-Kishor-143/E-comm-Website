@@ -25,6 +25,12 @@
       "name": "Carl",
       "email": "carl@gmail.com",
       "password": "1234"
+    },
+    {
+      "id": "a7bb",
+      "name": "Keshav",
+      "email": "keshav@gmail.com",
+      "password": "1234"
     }
   ],
   "products": [
@@ -164,5 +170,66 @@
       "id": "2304"
     }
   ],
-  "cart": []
+  "cart": [
+    {
+      "id": "54b8",
+      "name": "Samsung Note 20",
+      "price": "1,00,000",
+      "color": "Grey",
+      "category": "Mobile",
+      "description": "Samsung's latest of the note series 20",
+      "imageUrl": "https://www.sammobile.com/wp-content/uploads/2019/06/galaxy-note-10-pro-leak-2.png",
+      "quantity": 1,
+      "productId": "101f",
+      "userId": "27e0"
+    },
+    {
+      "id": "cf3d",
+      "name": "Whirlpool Single Door Refrigerator ",
+      "price": "15,000",
+      "color": "Blue",
+      "category": "Refrigerator",
+      "description": "Whirlpool 184 L 2 Star Direct-Cool Single Door Refrigerator (205 WDE CLS 2S SAPPHIRE BLUE-Z, Blue,2023 Model)",
+      "imageUrl": "https://m.media-amazon.com/images/I/51W0opp83WL._SX679_.jpg",
+      "quantity": 1,
+      "productId": "2304",
+      "userId": "27e0"
+    },
+    {
+      "id": "e5a4",
+      "name": "Oneplus Open ",
+      "price": "1,50,000",
+      "color": "Maroon",
+      "category": "Mobile",
+      "description": "Oneplus Open (Apex Edition,16GB RAM, 1TB Storage)",
+      "imageUrl": "https://m.media-amazon.com/images/I/81B4UqMfjeL._SX679_.jpg",
+      "quantity": 1,
+      "productId": "5151",
+      "userId": "27e0"
+    },
+    {
+      "id": "5fd0",
+      "name": "SONY Speakers",
+      "price": "15,000",
+      "color": "Black",
+      "category": "Speakers",
+      "description": "Sony HT-S20R Real 5.1ch Dolby Digital Soundbar for TV with subwoofer and Compact Rear Speakers, 5.1ch Home Theatre System (400W,Bluetooth & USB Connectivity, HDMI & Optical connectivity)",
+      "imageUrl": "https://m.media-amazon.com/images/I/71h7fLNEQPL._SX679_.jpg",
+      "quantity": 1,
+      "productId": "47fc",
+      "userId": "a7bb"
+    },
+    {
+      "id": "7551",
+      "name": "Shocknshop Stainless Steel Watch",
+      "price": "3,000",
+      "color": "Black",
+      "category": "Watches",
+      "description": "Shocknshop Stainless Steel Watch Series Analogue Men's Watch (Black Dial Mens Long Colored Strap) -W219",
+      "imageUrl": "https://m.media-amazon.com/images/I/51QBJ7Ag9oL._SY879_.jpg",
+      "quantity": 1,
+      "productId": "5736",
+      "userId": "a7bb"
+    }
+  ]
 }
