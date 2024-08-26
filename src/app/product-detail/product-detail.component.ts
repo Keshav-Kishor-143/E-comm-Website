@@ -26,8 +26,8 @@ export class ProductDetailComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
-    let productId = this.activatedRoute.snapshot.paramMap.get('productId');
-    console.warn(productId);
+    let productId = this.activatedRoute.snapshot.paramMap.get('id');
+    // console.warn("init-->",productId);
     productId &&
       this.productsService
         .getProductBasedOnId(productId)
@@ -37,7 +37,7 @@ export class ProductDetailComponent implements OnInit {
           if (productId && cartData) {
             let items = JSON.parse(cartData);
             items = items.filter(
-              (item: product) => productId === item.id.toString()
+              (item: product) => productId === item.productId?.toString()
             );
             if (items.length) {
               this.removeCart = true;
