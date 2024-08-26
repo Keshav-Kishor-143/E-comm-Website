@@ -6,7 +6,7 @@
       [openDelay]="300"
       [closeDelay]="500"
       triggers="mouseenter:mouseleave"
-      style="cursor: pointer;" 
+      style="cursor: pointer;"
       >E-Cart</a
     >
   </h1>
@@ -61,7 +61,7 @@
       </li>
       <li>
         <a [routerLink]="['/cart']" routerLinkActive="router-link-active"
-          style="cursor: pointer;" >Cart(0)</a>
+          style="cursor: pointer;" >Cart({{cartItems}})</a>
       </li>
     </ul>
 
@@ -71,7 +71,7 @@
       </li>
       <li>
         <a [routerLink]="['/cart']" routerLinkActive="router-link-active"
-          style="cursor: pointer;" >Cart(0)</a>
+          style="cursor: pointer;" >Cart({{cartItems}})</a>
       </li>
       <li>
         <a style="cursor: pointer;" (click)="logout()">Logout</a>

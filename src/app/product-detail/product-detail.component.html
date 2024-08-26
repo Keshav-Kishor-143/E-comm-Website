@@ -30,7 +30,16 @@
       </div>
 
       <div class="function-buttons">
-        <button class="form-button add-to-cart-button">Add to Cart</button>
+        <button
+          *ngIf="removeCart"
+          class="form-button"
+          (click)="removeFromCart(productData.id)"
+        >
+          Remove from Cart
+        </button>
+        <button *ngIf="!removeCart" class="form-button" (click)="addToCart()">
+          Add to Cart
+        </button>
         <button class="form-button buy-now-button">Buy Now</button>
       </div>
     </div>
