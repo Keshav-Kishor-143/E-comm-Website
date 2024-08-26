@@ -63,8 +63,8 @@ export class CartService {
   }
 
   //Method to remove cart items for logged in user from Database
-  removeCartItemFromDatabase(cartId: string) {
-    return this.http.delete(this.baseUrlCart + cartId);
+  removeCartItemFromDatabase(id: string) {
+    return this.http.delete(`${this.baseUrlCart}/${id}`);
   }
 
   // Centralized error handling
